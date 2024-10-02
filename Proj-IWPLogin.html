@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Elephant Conservation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700; /* Bold text */
+            z-index: 100;
+            transition: background-color 0.3s;
+        }
+
+        footer {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding-top: 100px; /* Space for the fixed header */
+            padding-bottom: 60px; /* Space for the fixed footer */
+        }
+
+        /* Login Form */
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .login-container .input-group {
+            position: relative;
+            margin: 20px 60px;
+        }
+
+        .login-container .input-group img {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 90%;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            outline: none;
+            border-color: #00796b;
+        }
+
+        .login-container button {
+            background-color: #00796b;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-left: 45px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container button img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .login-container button:hover {
+            background-color: #004d40;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-container .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .login-container .register-link a {
+            color: #00796b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-container .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Light and Dark Mode Styles */
+        .light-mode {
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        .light-mode header,
+        .light-mode footer {
+            background-color: #004d40;
+            color: white;
+        }
+
+        .dark-mode {
+            background-color: #004d40;
+            color: #e0e0e0;
+        }
+
+        .dark-mode header,
+        .dark-mode footer {
+            background-color: #1c1c1c;
+            color: #e0e0e0;
+        }
+
+        .dark-mode .login-container {
+            background-color: #333;
+            color: #e0e0e0;
+        }
+
+        .dark-mode .login-container input[type="text"],
+        .dark-mode .login-container input[type="password"] {
+            background-color: #444;
+            color: #e0e0e0;
+            border: 1px solid #666;
+        }
+
+        .dark-mode .login-container input[type="text"]:focus,
+        .dark-mode .login-container input[type="password"]:focus {
+            border-color: #80cbc4;
+        }
+
+        .dark-mode .login-container button {
+            background-color: #80cbc4;
+            color: #121212;
+        }
+
+        .dark-mode .login-container button:hover {
+            background-color: #80cbc4;
+        }
+
+        .dark-mode .register-link a {
+            color: #80cbc4;
+        }
+
+        /* Toggle Button */
+        .toggle-button {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <header>
+        The Tusk Alliance
+    </header>
+    
+    <div class="wrapper">
+        <div class="login-container">
+            <h2>Login</h2>
+            <div class="input-group">
+                <img src="https://iconscout.com/free-icon/lock-key-3604334" alt="Lock Icon">
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <img src="https://iconscout.com/icon/lock-key-5145681" alt="Key Icon">
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit">
+                <img src="lock-icon.png" alt="Lock Icon">
+                Login 
+            </button>
+            <br>
+            <a href="Proj-IWP-1.html">Back to Main</a>
+            <div class="register-link">
+                Don't have an account? <a href="Proj-IWPReg.html">Register here</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 The Tusk Alliance
+    </footer>
+
+    <button class="toggle-button" onclick="toggleMode()">☼</button>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+
+            // Save the current mode in localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                localStorage.setItem('theme', 'light-mode');
+            }
+        }
+
+        // Load the preferred theme on page load
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.className = savedTheme;
+            }
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Elephant Conservation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            z-index: 100;
+            transition: background-color 0.3s;
+        }
+
+        footer {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding-top: 120px; /* Space for the fixed header */
+            padding-bottom: 60px; /* Space for the fixed footer */
+        }
+
+        /* Registration Form */
+        .register-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .register-container h2 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        .register-container .input-group {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .register-container .input-group img {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+        }
+
+        .register-container input[type="text"],
+        .register-container input[type="password"],
+        .register-container input[type="email"],
+        .register-container input[type="tel"] {
+            width: 75%;
+            padding: 15px 40px;
+            margin: 10px 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .register-container input[type="text"]:focus,
+        .register-container input[type="password"]:focus,
+        .register-container input[type="email"]:focus,
+        .register-container input[type="tel"]:focus {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            outline: none;
+            border-color: #00796b;
+        }
+
+        .register-container button {
+            background-color: #00796b;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .register-container button img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .register-container button:hover {
+            background-color: #004d40;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .register-container .login-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .register-container .login-link a {
+            color: #00796b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-container .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Light and Dark Mode Styles */
+        .light-mode {
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        .light-mode header,
+        .light-mode footer {
+            background-color: #004d40;
+            color: white;
+        }
+
+        .dark-mode {
+            background-color: #004d40;
+            color: #e0e0e0;
+        }
+
+        .dark-mode header,
+        .dark-mode footer {
+            background-color: #1c1c1c;
+            color: #e0e0e0;
+        }
+
+        .dark-mode .register-container {
+            background-color: #333;
+            color: #e0e0e0;
+        }
+
+        .dark-mode .register-container input[type="text"],
+        .dark-mode .register-container input[type="password"],
+        .dark-mode .register-container input[type="email"],
+        .dark-mode .register-container input[type="tel"] {
+            background-color: #444;
+            color: #e0e0e0;
+            border: 1px solid #666;
+        }
+
+        .dark-mode .register-container input[type="text"]:focus,
+        .dark-mode .register-container input[type="password"]:focus,
+        .dark-mode .register-container input[type="email"]:focus,
+        .dark-mode .register-container input[type="tel"]:focus {
+            border-color: #80cbc4;
+        }
+
+        .dark-mode .register-container button {
+            background-color: #80cbc4;
+            color: #121212;
+        }
+
+        .dark-mode .register-container button:hover {
+            background-color: #80cbc4;
+        }
+
+        .dark-mode .login-link a {
+            color: #80cbc4;
+        }
+
+        /* Toggle Button */
+        .toggle-button {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <header>
+        The Tusk Alliance
+    </header>
+
+    <div class="wrapper">
+        <div class="register-container">
+            <h2>Register</h2>
+            <div class="input-group">
+                <img src="https://iconscout.com/free-icon/user-profile-3619424" alt="User Icon">
+                <input type="text" id="full-name" placeholder="Full Name" required>
+            </div>
+            <div class="input-group">
+                <img src="https://iconscout.com/free-icon/user-profile-3619424" alt="User Icon">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <img src="https://iconscout.com/free-icon/lock-key-3604334" alt="Password Icon">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <div class="input-group">
+                <img src="https://iconscout.com/free-icon/lock-key-3604334" alt="Password Icon">
+                <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+            </div>
+            <div class="input-group">
+                <img src="https://iconscout.com/free-icon/phone-2041881" alt="Phone Icon">
+                <input type="tel" id="phone" placeholder="Phone Number" required>
+            </div>
+            <div class="input-group">
+                <img src="https://iconscout.com/free-icon/email-3044128" alt="Email Icon">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <button type="submit" onclick="validateForm()">
+                <img src="register-icon.png" alt="Register Icon">
+                Register
+            </button>
+            <br>
+            <a href="Proj-IWP-1.html">Back to Main</a>
+            <br>
+            <div class="login-link">
+                Already have an account? <a href="Proj-IWPLogin.html">Login here</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 The Tusk Alliance
+    </footer>
+
+    <button class="toggle-button" onclick="toggleMode()">☼</button>
+
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+
+            // Save the current mode in localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                localStorage.setItem('theme', 'light-mode');
+            }
+        }
+
+        // Load the preferred theme on page load
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.className = savedTheme;
+            }
+        };
+
+        function validateForm() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return false;
+            }
+            alert('Registration successful!');
+            // Here you would typically submit the form data to the server
+        }
+    </script>
+</body>
+</html>

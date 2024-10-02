@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elephant Conservation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 100%;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            font-size: 2em;
+            font-weight: 700;
+            z-index: 100;
+            transition: background-color 0.3s;
+            background-color: #004d40;
+            color: white;
+        }
+
+        .container {
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 100px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        h2,
+        h3 {
+            transition: color 0.3s;
+        }
+
+        p {
+            font-size: 1em;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.3s;
+        }
+
+        .carousel {
+            margin: 0 auto;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+        }
+
+        .carousel-prev,
+        .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .carousel-prev {
+            left: 10px;
+        }
+
+        .carousel-next {
+            right: 10px;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #004d40;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.3);
+            background-color: #004d40;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .elephant-button-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .elephant-button-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .elephant-button {
+            width: 50px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            margin-left: 15px;
+            margin-bottom: 15px;
+            color: #00796b;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .elephant-button:hover {
+            transform: scale(1.1);
+        }
+
+        .support-text {
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .support-text:hover {
+            color: #004d40;
+        }
+
+        .light-mode {
+            background-color: #fafafa;
+            color: #333;
+        }
+
+        .light-mode header,
+        .light-mode footer {
+            background-color: #004d40;
+            color: white;
+        }
+
+        .light-mode h2,
+        .light-mode h3 {
+            color: #004d40;
+        }
+
+        .dark-mode {
+            background-color: #004d40;
+            color: #e0e0e0;
+        }
+
+        .dark-mode header,
+        .dark-mode footer {
+            background-color: #1c1c1c;
+            color: #e0e0e0;
+        }
+
+        .dark-mode h2,
+        .dark-mode h3 {
+            color: #fafafa;
+        }
+
+        .dark-mode button {
+            background-color: #80cbc4;
+            color: #121212;
+        }
+
+        .dark-mode button:hover {
+            background-color: #80cbc4;
+        }
+
+        .dark-mode .elephant-button-container {
+            background-color: #1c1c1c;
+        }
+
+        .toggle-button {
+            position: fixed;
+            top: 65px;
+            right: 20px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            background-color: #004d40;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header {
+                font-size: 1.5em;
+                padding: 8px 0;
+            }
+
+            .container {
+                padding: 10px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            h3 {
+                font-size: 1.2em;
+            }
+
+            .carousel-prev,
+            .carousel-next {
+                padding: 5px;
+                font-size: 0.8em;
+            }
+
+            .toggle-button {
+                top: 60px;
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <header>
+        The Tusk Alliance
+    </header>
+
+    <div class="container">
+        <h2>Why Elephant Conservation Matters</h2>
+        <p>Elephants are not just majestic creatures; they are the architects of their ecosystems. These gentle giants
+            play an irreplaceable role in maintaining the balance of their natural habitats. Sadly, they are now
+            endangered due to poaching, habitat loss, and human-wildlife conflict. Join us in the fight to protect these
+            incredible animals.</p>
+
+        <div class="image-container">
+            <img src="elephant1.jpg" alt="Elephant Image 1">
+        </div>
+
+        <h3>Conservation Efforts</h3>
+        <p>Various organizations are working tirelessly to protect elephants. From anti-poaching units to community
+            outreach and education programs, these efforts are making a difference. But we need your help to ensure that
+            elephants can thrive for generations to come.</p>
+
+        <div class="carousel">
+            <div class="carousel-inner">
+                <img src="elephant2.jpg" alt="Elephant Image 2">
+                <img src="elephant3.jpg" alt="Elephant Image 3">
+                <img src="elephant4.jpg" alt="Elephant Image 4">
+            </div>
+            <button class="carousel-prev">&#10094;</button>
+            <button class="carousel-next">&#10095;</button>
+        </div>
+
+        <p>Your support can make a world of difference. By contributing to elephant conservation efforts, you're not
+            just saving an animal; you're preserving an entire ecosystem. Every donation, no matter the size, helps us
+            protect these magnificent creatures and the natural world they inhabit.</p>
+
+        <button>Donate Now</button>
+    </div>
+
+    <footer>
+        &copy; 2024 The Tusk Alliance
+    </footer>
+
+    <div class="elephant-button-container">
+        <span class="support-text">Support Elephant Conservation</span>
+        <button class="elephant-button">&#128024;</button>
+    </div>
+
+    <button class="toggle-button">Toggle Dark Mode</button>
+
+    <script>
+        document.querySelector('.toggle-button').addEventListener('click', function () {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+        });
+
+        // Carousel Functionality
+        const prevButton = document.querySelector('.carousel-prev');
+        const nextButton = document.querySelector('.carousel-next');
+        const carouselInner = document.querySelector('.carousel-inner');
+        const images = carouselInner.querySelectorAll('img');
+
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
+        }
+
+        prevButton.addEventListener('click', function () {
+            currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+            updateCarousel();
+        });
+
+        nextButton.addEventListener('click', function () {
+            currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
+            updateCarousel();
+        });
+    </script>
+</body>
+
+</html>

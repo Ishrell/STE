@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elephant Conservation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa;
+            color: #333;
+            position: relative;
+            min-height: 100vh;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            background-color: #004d40;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700; /* Bold text */
+            z-index: 100;
+        }
+         .container {
+            margin-left: 90px;
+            margin-right: 90px;
+            margin-bottom: 50px;
+            padding: 20px;
+            padding-bottom: 80px; /* Ensure footer is visible */
+        }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            color: #004d40;
+        }
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+            color: #00796b;
+        }
+        p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .carousel {
+            width:70%;
+            position: center;
+            overflow: hidden;
+          }
+          
+          .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Smooth transition */
+          }
+          
+          .carousel-inner img {
+            width: 100%;
+            height:auto;
+            flex-shrink: 0; /* Prevent shrinking */
+          }
+          
+          .carousel-prev, .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 10;
+          }
+          
+          .carousel-prev {
+            left: 10px;
+          }
+          
+          .carousel-next {
+            right: 10px;
+          } 
+
+        button {
+            background-color: #00796b;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #004d40;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        footer {
+            background-color: #004d40;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            text-align: center;
+            padding: 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -8px 16px rgba(0, 0, 0, 0.3);
+        }
+        /* Elephant button styles */
+        .elephant-button-container {
+            margin-bottom: 100px;
+            font-family: 'Montserrat', sans-serif;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .elephant-button-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        .elephant-button {
+            background: url('https://example.com/elephant-icon.png') no-repeat center center;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            margin-left: 15px;
+            margin-bottom:15px;
+            color: #00796b; 
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: 'Montserrat', sans-serif;
+            transition: transform 0.2s ease;
+        }
+        .elephant-button:hover {
+            transform: scale(1.1);
+        }
+        .support-text {
+            font-size: 14px;
+            color: #00796b;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .support-text:hover {
+            color: #004d40;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        The Tusk Alliance
+    </header>
+
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <h2>Why Elephant Conservation Matters</h2>
+        <p>Elephants are not just majestic creatures; they are the architects of their ecosystems. These gentle giants play an irreplaceable role in maintaining the balance of the environment. Their enormous size and foraging habits create pathways for other wildlife and help sustain the health of forests and savannas. When elephants move through their habitats, they disperse seeds, promote plant growth, and even contribute to the creation of watering holes that many other animals depend on.
+            <br>
+            <br>
+            But the significance of elephant conservation extends beyond their ecological impact. Elephants are deeply woven into the cultural and spiritual fabric of many communities around the world. They symbolize strength, wisdom, and unity in numerous traditions, embodying values that resonate with us all.
+            <br>
+            <br>
+            Unfortunately, poaching and habitat loss threaten their very existence. Every time we lose an elephant, we lose more than just a single animal; we disrupt a complex web of life that relies on their presence. Their decline is a stark reminder of the fragility of our planet and our responsibility to protect it.
+            <br>
+            <br>
+            Conserving elephants is about preserving the intricate balance of our natural world and ensuring that future generations can experience the awe and inspiration that these magnificent creatures bring. It is a commitment to safeguarding the planet's biodiversity and a testament to our shared humanity. By supporting elephant conservation, we are making a stand for the preservation of life itself and honoring the enduring legacy of these extraordinary beings.</p>
+
+
+        <div class="carousel">
+            <div class="carousel-inner">
+                <img src="https://imgs.search.brave.com/uTChMU4rhhwWh-1fqmuv-N2IzX-BUp4j_V7mN0WLhjs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM0/OTAxMDIzNS9waG90/by9yZWFyLXZpZXct/b2YtYWZyaWNhbi1l/bGVwaGFudC13YWxr/aW5nLW9uLWZpZWxk/LWFnYWluc3Qtc2t5/LmpwZz9zPTYxMng2/MTImdz0wJms9MjAm/Yz1BZm5BU2xfQUxS/RGs5akVha0pxeXhK/Yi1Eei1vZWpWYjNF/ME9LUy1MLVBzPQ" alt="Cute Elephant 1">
+                <img src="https://imgs.search.brave.com/q1BWpHZAkQz-uMEywNcQ3SLP65QsAA6aSVB8rWnztSA/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuZnJlZWltYWdl/cy5jb20vaW1hZ2Vz/L2xhcmdlLXByZXZp/ZXdzL2FjOC9lbGVw/aGFudC0xNDAwMzcw/LmpwZz9mbXQ" alt="Cute Elephant 2">
+                <img src="https://imgs.search.brave.com/hSyu7IztIgNxbvybEiMSswGsZd8c5kJ7VVRMotomkdI/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTY3/MTU0NDMyL3Bob3Rv/L2FuLWVsZXBoYW50/LWFuZC1pdHMtYmFi/eS13YWxraW5nLWlu/LWxvbmctZ3Jhc3Mu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PUhUVlVoMHJkVm1W/aVcyWnAyaXg0bXpS/YnBzbFpKQUZueDVK/RmdZMWp5dE09" alt="Cute Elephant 1">
+                <img src="https://imgs.search.brave.com/krG0Ik-o7PN9s66iEMcqf6Vmz8AsK6JtzKRf22AE3gQ/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMjE0/ODU0MjY3My9waG90/by9tb3RoZXItYWZy/aWNhbi1lbGVwaGFu/dC1hbmQtaGVyLW5l/dy1jYWxmLndlYnA_/Yj0xJnM9MTcwNjY3/YSZ3PTAmaz0yMCZj/PUdkSlVTVzc1RXVK/WFBvUkJiUG1lYlJH/ZDVMaUU1VGozOWlw/OURBWU5oMW89" alt="Cute Elephant 1">
+                <img src="https://imgs.search.brave.com/bqjnCgFXj9o37YP93YCs3WrurTPOn7qkq700NMguc8k/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvODYz/NjcxMTg4L3Bob3Rv/L3RoYWlsYW5kLWVs/ZXBoYW50LmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1jdDNm/RDNRaWI3NE9GWFpo/M2lNc2ZVazAwWnZV/Y2NwTUx5ekhmTDFt/VU93PQ" alt="Cute Elephant 3">
+                <img src="https://imgs.search.brave.com/KXkO3t8Zd5ALlQL0Q3GafhMkGeczQGZKI24QCLSxoE8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMjE0/ODU5NTQ2My9waG90/by9hZnJpY2FuLWVs/ZXBoYW50LWluLXdp/bGRlcm5lc3MtYXQt/c3Vuc2V0LndlYnA_/Yj0xJnM9MTcwNjY3/YSZ3PTAmaz0yMCZj/PVpYbmM0Z015TlZV/T3Bnci10MzJCUml1/UDJscXlXdVk5bDRT/ZU1HYWZNTjA9" alt="Cute Elephant 2">
+                <img src="https://imgs.search.brave.com/jCltgp-xzvEUZWP5FFoCPe8H6O3sK7i-2MdCfb74kVk/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTM0/ODk4MDYxL3Bob3Rv/L2FmcmljYW4tZWxl/cGhhbnQtYXQtd2F0/ZXItaG9sZS1ib3Rz/d2FuYS5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9SDNaS1B1/aHJ3a0prN0duMmZL/MWN1ZkhzWm1BQ3Jv/ZENTTzBKZFdMRU1N/dz0" alt="Cute Elephant 2">
+                <img src="https://imgs.search.brave.com/b1SLOXx6_4POI4_npuCJMNinii99se0nbbbf_-hB0JM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAzLzA2LzY0LzEz/LzM2MF9GXzMwNjY0/MTM2NV9RTzU2Zk93/bTFnbjlTV1ZmMXdy/YW10Z2RmMmcxUkZy/aC5qcGc" alt="Cute Elephant 2">
+            </div>
+            <button class="carousel-control prev" onclick="prevSlide()">❮</button>
+            <button class="carousel-control next" onclick="nextSlide()">❯</button>
+        </div>
+      
+        <h3>What You Can Do to Help</h3>
+        <p>1. Be a Champion for Conservation
+            Your voice has the power to drive change. Support organizations dedicated to elephant conservation with your donations or by adopting an elephant. Every contribution helps fund critical anti-poaching efforts, habitat preservation, and community outreach programs.
+            <br><br>
+            2. Educate and Inspire
+            Share the message about the importance of elephant conservation. Use your platform—whether it's social media, community groups, or casual conversations—to raise awareness about the plight of elephants and inspire others to join the cause.
+            <br><br>
+            3. Advocate for Stronger Protections
+            Push for stronger legislation and policies that protect elephants. Advocate for a ban on ivory trade and support policies that address habitat destruction. Engage with policymakers and encourage them to prioritize wildlife protection.
+            <br><br>
+            4. Make Sustainable Choices
+            Reduce your environmental impact by choosing sustainable products and practices. Support companies that prioritize conservation and avoid products made from elephants. Your consumer choices can drive demand for ethical practices.
+            <br><br>
+            5. Volunteer Your Time and Skills
+            Get involved on the ground by volunteering with conservation projects. Your time and skills can contribute to fieldwork, education, and advocacy efforts that directly benefit elephants and their habitats.
+            <br><br>
+            6. Choose Responsible Tourism
+            Support eco-friendly tourism that respects wildlife. Avoid attractions that exploit elephants and opt for experiences that promote their well-being and conservation.
+            <br><br>
+            7. Stay Informed and Act
+            Educate yourself about elephant conservation and stay updated on the latest issues and solutions. Participate in workshops, seminars, and events to deepen your understanding and enhance your ability to contribute effectively.
+            <br><br>
+            8. Report Illegal Activities
+            Help protect elephants by reporting any suspicious activities related to poaching or illegal wildlife trade. Your vigilance can aid in the enforcement of conservation laws and protect these magnificent animals.
+            <br><br>
+            By taking these steps, you are not just supporting a cause—you are becoming a crucial part of a global movement to ensure that elephants continue to roam the Earth for generations to come. Your actions, no matter how small, are a powerful testament to your commitment to preserving these incredible creatures and the natural world they help sustain.</p>
+
+        <button onclick="showMessage()"><i><b>Learn More</b></i></button>
+
+        <p id="message"></p>
+    </div>
+
+    <footer>
+        <p><b>&copy; 2024 The Tusk Alliance Initiative</b></p>
+    </footer>
+
+    <!-- Elephant-shaped button with support text -->
+    <div class="elephant-button-container">
+        <div class="support-text"><b>Click to support the elephants</b></div>
+        <button class="elephant-button" onclick="showAlert()"></button>
+    </div>
+
+    <script>
+        function showMessage() {
+        window.location.href = "https://www.savetheelephants.org/";
+        }
+    
+        function showAlert() {
+            alert('Thank you for supporting elephant conservation!');
+        }
+    
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-inner img');
+            const totalSlides = slides.length;
+        
+            function showSlide(index) {
+                // Update the current slide index
+                if (index >= totalSlides) {
+                    currentSlide = 0; // Loop back to the first slide
+                } else if (index < 0) {
+                    currentSlide = totalSlides - 1; // Loop back to the last slide
+                } else {
+                    currentSlide = index;
+                }
+                // Move carousel to the current slide
+                const offset = -currentSlide * 100;
+                document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+            }
+        
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+        
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+        
+            // Initialize carousel
+            showSlide(currentSlide);
+
+            setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
